@@ -14,7 +14,7 @@ Triggers can be explicitly fired by a user or by an external event source. A *fe
 - CouchDB data change feed that fires a trigger event each time a document in a database is added or modified.
 - A Git feed that fires a trigger event for every commit to a Git repository.
 
-🎉🎉🎉 **Triggers are an implementation of the Observer pattern. Instances of triggers can be fired with parameters. Next we need to find out how to register observers. ** 🎉🎉🎉
+🎉🎉🎉 **Triggers are an implementation of the Observer pattern. Instances of triggers can be fired with parameters. Next we need to find out how to register observers.** 🎉🎉🎉
 
 #### Rules
 
