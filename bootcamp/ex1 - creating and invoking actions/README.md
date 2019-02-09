@@ -27,7 +27,6 @@ Once this exercise is finished, we will be able to create simple serverless func
   * [Proxy Example](openwhisk.md#proxy-example)
 * [Asynchronous Actions](async.md#asynchronous-actions)
   * [Returning asynchronous results (Node.js)](async.md#returning-asynchronous-results-(node.js))
-  * [Using actions to call an external API](async.md#using-actions-to-call-an-external-api)
 
 
 ### Background
