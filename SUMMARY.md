@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Apache OpenWhisk THINK 2019](README.md)
-* [OpenWhisk Bootcamp](bootcamp/README.md)
+* [OpenWhisk Masterclass](bootcamp/README.md)
   * [Setting Up Dev Environment](bootcamp/ex0-setting-up-development-environment/README.md)
     * [Sign Up](bootcamp/ex0-setting-up-development-environment/signup.md)
     * [Setting Up the CLI](bootcamp/ex0-setting-up-development-environment/cli_setup.md)

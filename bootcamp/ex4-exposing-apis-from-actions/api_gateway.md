@@ -6,7 +6,7 @@ OpenWhisk web actions can benefit from being exposed using the API gateway.
 
 The API Gateway acts as a proxy to [Web Actions](https://github.com/apache/incubator-openwhisk/blob/master/docs/webactions.md) and provides them with additional features including HTTP method routing , client id/secrets, rate limiting and CORS. For more information on API Gateway feature you can read the [api management documentation](https://github.com/apache/incubator-openwhisk-apigateway/blob/master/doc/v2/management_interface_v2.md)
 
-### example
+### Example
 
 Let's look a short example of using the API Gateway service…
 
@@ -63,7 +63,7 @@ $ curl -XPOST "https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/<UU
 }
 ```
 
-### saving & restoring
+### Saving & Restoring
 
 1. List all the exposed API endpoints.
 

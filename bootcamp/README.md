@@ -1,4 +1,4 @@
-# OpenWhisk Bootcamp
+# OpenWhisk Masterclass
 
 Hello 👋.
 
