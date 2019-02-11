@@ -2,13 +2,11 @@
 
 ## Install IBM Cloud CLI
 
-1. Open the [IBM Cloud Docs](https://console.bluemix.net/docs/) page.
-2. Open the _"_[_IBM Cloud Developer Tools \(CLI\)_](https://console.bluemix.net/docs/cli/index.html#overview)_"_ link from the _"IBM Cloud"_ section.
-3. Click on the _"_[_Download and install IBM Cloud CLI_](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html#download_install)_"_ link under _"HOW TO"_ section in the left-hand menu.
-4. Follow the steps listed under the [_"Install from shell"_](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html#shell_install) section to download and install the IBM Cloud CLI.
-5. MacOS: `curl -fsSL https://clis.ng.bluemix.net/install/osx | sh`
-6. Linux: `curl -fsSL https://clis.ng.bluemix.net/install/linux | sh`
-7. Windows \(Powershell\): `iex(New-Object Net.WebClient).DownloadString('https://clis.ng.bluemix.net/install/powershell')`
+Download the `ibmcloud` CLI by running the command appropriate for your operating system:
+
+1. MacOS: `curl -fsSL https://clis.ng.bluemix.net/install/osx | sh`
+2. Linux: `curl -fsSL https://clis.ng.bluemix.net/install/linux | sh`
+3. Windows \(Powershell\): `iex(New-Object Net.WebClient).DownloadString('https://clis.ng.bluemix.net/install/powershell')`
 
 ![Registration page](../../.gitbook/assets/docs.gif)
 
