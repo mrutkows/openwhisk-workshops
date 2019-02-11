@@ -12,6 +12,9 @@ Using `ibmcloud wsk` CLI you can get a list of packages in a namespace, list the
 
 ```text
 $ ibmcloud wsk package list /whisk.system
+```
+
+```text
 packages
 /whisk.system/combinators                                              shared
 /whisk.system/websocket                                                shared
@@ -33,6 +36,9 @@ packages
 
 ```text
 $ ibmcloud wsk package get --summary /whisk.system/cloudant
+```
+
+```text
 package /whisk.system/cloudant: Cloudant database service
    (parameters: *apihost, *bluemixServiceName, *dbname, *host, overwrite, *password, *username)
  action /whisk.system/cloudant/read: Read document from database
@@ -54,6 +60,9 @@ The Cloudant package also defines the parameters `username`, `password`, `host`,
 
 ```text
 $ ibmcloud wsk action get --summary /whisk.system/cloudant/read
+```
+
+```text
 action /whisk.system/cloudant/read: Read document from database
    (parameters: *apihost, *bluemixServiceName, *dbname, *host, *id, params, *password, *username)
 ```
@@ -68,6 +77,9 @@ You can invoke actions in a package, just as with other actions. The next few st
 
 ```text
 $ ibmcloud wsk action get --summary /whisk.system/samples/greeting
+```
+
+```text
 action /whisk.system/samples/greeting: Returns a friendly greeting
    (parameters: name, place)
 ```
@@ -78,6 +90,9 @@ Notice that the `greeting` action takes two parameters: `name` and `place`.
 
 ```text
 $ ibmcloud wsk action invoke --result /whisk.system/samples/greeting
+```
+
+```text
 {
     "payload": "Hello, stranger from somewhere!"
 }
@@ -89,6 +104,9 @@ The output is a generic message because no parameters were specified.
 
 ```text
 $ ibmcloud wsk action invoke --result /whisk.system/samples/greeting --param name Bernie --param place Vermont
+```
+
+```text
 {
     "payload": "Hello, Bernie from Vermont!"
 }
@@ -108,6 +126,9 @@ In the following simple example, you bind to the `/whisk.system/samples` package
 
 ```text
 $ ibmcloud wsk package bind /whisk.system/samples valhallaSamples --param place Valhalla
+```
+
+```text
 ok: created binding valhallaSamples
 ```
 
@@ -115,6 +136,9 @@ ok: created binding valhallaSamples
 
 ```text
 $ ibmcloud wsk package get --summary valhallaSamples
+```
+
+```text
 package /namespace/valhallaSamples: Returns a result based on parameter place
    (parameters: *place)
  action /namespace/valhallaSamples/helloWorld: Demonstrates logging facilities
@@ -133,6 +157,9 @@ Notice that all the actions in the `/whisk.system/samples` package are available
 
 ```text
 $ ibmcloud wsk action invoke --result valhallaSamples/greeting --param name Odin
+```
+
+```text
 {
     "payload": "Hello, Odin from Valhalla!"
 }
@@ -144,6 +171,9 @@ Notice from the result that the action inherits the `place` parameter you set wh
 
 ```text
 $ ibmcloud wsk action invoke --result valhallaSamples/greeting --param name Odin --param place Asgard
+```
+
+```text
 {
     "payload": "Hello, Odin from Asgard!"
 }

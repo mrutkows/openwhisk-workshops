@@ -18,6 +18,9 @@ The JavaScript file might contain additional functions. However, by convention, 
 
 ```text
 $ ibmcloud wsk action create hello hello.js
+```
+
+```text
 ok: created action hello
 ```
 
@@ -25,6 +28,9 @@ ok: created action hello
 
 ```text
 $ ibmcloud wsk action list
+```
+
+```text
 actions
 hello       private
 ```
@@ -70,6 +76,9 @@ If you don't need the action result right away, you can omit the `—blocking` f
 
 ```text
 $ ibmcloud wsk action invoke hello
+```
+
+```text
 ok: invoked hello with id 6bf1f670ee614a7eb5af3c9fde813043
 ```
 
@@ -77,6 +86,9 @@ ok: invoked hello with id 6bf1f670ee614a7eb5af3c9fde813043
 
 ```text
 $ ibmcloud wsk activation result 6bf1f670ee614a7eb5af3c9fde813043
+```
+
+```text
 {
     "payload": "Hello world"
 }
@@ -88,6 +100,9 @@ To access the most recent activation record, activation results or activation lo
 
 ```text
 $ ibmcloud wsk activation result --last
+```
+
+```text
 {
     "payload": "Hello world"
 }
@@ -99,6 +114,9 @@ Note that you should not use an activation ID with the flag `--last`.
 
 ```text
 $ ibmcloud wsk activation list
+```
+
+```text
 activations
 44794bd6aab74415b4e42a308d880e5b         hello
 6bf1f670ee614a7eb5af3c9fde813043         hello

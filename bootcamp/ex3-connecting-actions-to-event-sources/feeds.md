@@ -8,6 +8,9 @@ This example shows how to use a feed in the [Alarms package](https://github.com/
 
 ```text
 $ ibmcloud wsk package get --summary /whisk.system/alarms
+```
+
+```text
 package /whisk.system/alarms: Alarms and periodic utility
    (parameters: *apihost, *trigger_payload)
  feed   /whisk.system/alarms/interval: Fire trigger at specified interval
@@ -22,6 +25,9 @@ package /whisk.system/alarms: Alarms and periodic utility
 
 ```text
 $ ibmcloud wsk action get --summary /whisk.system/alarms/interval
+```
+
+```text
 action /whisk.system/alarms/interval: Fire trigger at specified interval
    (parameters: *apihost, *isInterval, minutes, startDate, stopDate, *trigger_payload)
 ```
@@ -34,6 +40,9 @@ The `/whisk.system/alarms/interval` feed has the following parameters we need to
 
 ```text
 $ ibmcloud wsk trigger create everyMinute --feed /whisk.system/alarms/interval -p minutes 1 -p trigger_payload "{\"name\":\"Mork\", \"place\":\"Ork\"}"
+```
+
+```text
 ok: invoked /whisk.system/alarms/interval with id b2b4c3cb38224f44b4c3cb38228f44be
 ...
 ok: created trigger everyMinute
@@ -43,6 +52,9 @@ ok: created trigger everyMinute
 
 ```text
 $ ibmcloud wsk rule create everyMinuteRule everyMinute hello
+```
+
+```text
 ok: created rule everyMinuteRule
 ```
 
@@ -50,6 +62,9 @@ ok: created rule everyMinuteRule
 
 ```text
 $ ibmcloud wsk activation poll
+```
+
+```text
 Activation: 'hello' (b2fc4b00c7be4143bc4b00c7bed1431c)
 []
 Activation: 'everyMinute' (cec7eb38739c4d4287eb38739ccd42ef)
@@ -64,6 +79,9 @@ You should see activations every minute the trigger and the action. The action r
 
 ```text
 $ ibmcloud wsk trigger delete everyMinute
+```
+
+```text
 $ ibmcloud wsk rule delete everyMinuteRule
 ```
 

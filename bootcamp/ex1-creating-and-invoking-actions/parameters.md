@@ -28,6 +28,9 @@ When invoking actions through the command-line, parameter values can be passed a
 
 ```text
 $ ibmcloud wsk action invoke --result hello --param name Bernie --param place Vermont
+```
+
+```text
 {
     "payload": "Hello, Bernie from Vermont"
 }
@@ -46,6 +49,9 @@ $ ibmcloud wsk action invoke --result hello --param name Bernie --param place Ve
 
 ```text
 $ ibmcloud wsk action invoke --result hello --param-file parameters.json
+```
+
+```text
 {
     "payload": "Hello, Bernie from Vermont"
 }
@@ -129,6 +135,9 @@ Notice that you did not need to specify the place parameter when you invoked the
 
 ```text
 $ ibmcloud wsk action invoke --result hello --param name Bernie --param place "Washington, DC"
+```
+
+```text
 {  
     "payload": "Hello, Bernie from Washington, DC"
 }

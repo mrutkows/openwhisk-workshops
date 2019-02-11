@@ -18,6 +18,9 @@ function main(params) {
 
 ```text
 $ ibmcloud wsk action create logs logs.js
+```
+
+```text
 ok: created action logs
 ```
 
@@ -25,6 +28,9 @@ ok: created action logs
 
 ```text
 $ ibmcloud wsk action invoke -r logs -p hello world
+```
+
+```text
 {
     "result": true
 }
@@ -36,6 +42,9 @@ $ ibmcloud wsk action invoke -r logs -p hello world
 
 ```text
 $ ibmcloud wsk activation get --last
+```
+
+```text
 ok: got activation 9fc044881705479580448817053795bd
 {    
     ...   
@@ -51,6 +60,9 @@ ok: got activation 9fc044881705479580448817053795bd
 
 ```text
 $ ibmcloud wsk activation logs --last
+```
+
+```text
 2018-03-02T09:49:03.021404683Z stdout: function called with params { hello: 'world' }
 2018-03-02T09:49:03.021816473Z stderr: this is an error message
 ```
@@ -63,6 +75,9 @@ Activation logs can be monitored in real-time, rather than manually retrieving i
 
 ```text
 $ ibmcloud wsk activation poll
+```
+
+```text
 Enter Ctrl-c to exit.
 Polling for activation logs
 ```
@@ -71,6 +86,9 @@ Polling for activation logs
 
 ```text
 $ ibmcloud wsk action invoke logs -p hello world
+```
+
+```text
 ok: invoked /_/logs with id 0e8d715393504f628d715393503f6227
 ```
 

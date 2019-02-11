@@ -6,6 +6,9 @@
 
    ```text
    $ ibmcloud plugin install cloud-functions
+   ```
+
+   ```text
    Looking up 'cloud-functions' from repository 'Bluemix'...
    Plug-in 'cloud-functions 1.0.7' found in repository 'Bluemix'
    Attempting to download the binary file...
@@ -24,6 +27,9 @@ _This plugin provides the_ [_Apache OpenWhisk CLI_](https://github.com/apache/in
 
    ```text
    $ ibmcloud wsk action invoke whisk.system/utils/echo -p message hello --result
+   ```
+
+   ```text
    {
        "message": "hello"
    }

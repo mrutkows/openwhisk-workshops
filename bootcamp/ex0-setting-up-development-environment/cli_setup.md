@@ -57,6 +57,9 @@ Download the `ibmcloud` CLI by running the command appropriate for your operatin
 
    ```text
    $ ibmcloud target --cf
+   ```
+
+   ```text
    Targeted org user@email.com
    Targeted space dev
 

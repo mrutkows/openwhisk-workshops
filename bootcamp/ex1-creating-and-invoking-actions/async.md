@@ -34,6 +34,9 @@ $ ibmcloud wsk action create asyncAction asyncAction.js
 
 ```text
 $ ibmcloud wsk action invoke --result asyncAction
+```
+
+```text
 {
     "done": true
 }
@@ -45,6 +48,9 @@ Notice that you performed a blocking invocation of an asynchronous action.
 
 ```text
 $ ibmcloud wsk activation get --last
+```
+
+```text
 {
      "duration": 2026,
      ...
@@ -61,6 +67,9 @@ Let's look at what happens when an action invocation takes longer than the `time
 
 ```text
 $ ibmcloud wsk action update asyncAction --timeout 1000
+```
+
+```text
 ok: updated action asyncAction
 ```
 
@@ -68,6 +77,9 @@ ok: updated action asyncAction
 
 ```text
 $ ibmcloud wsk action invoke asyncAction --result
+```
+
+```text
 {
     "error": "The action exceeded its time limits of 1000 milliseconds."
 }
@@ -79,6 +91,9 @@ The error message returned by the platform indicates the action didn't return a 
 
 ```text
 $ ibmcloud wsk action update asyncAction --timeout 10000
+```
+
+```text
 ok: updated action asyncAction
 ```
 
@@ -86,6 +101,9 @@ ok: updated action asyncAction
 
 ```text
 $ ibmcloud wsk action invoke asyncAction --result
+```
+
+```text
 {
     "done": true
 }

@@ -37,6 +37,9 @@ $ ibmcloud wsk action create proxy proxy.js
 
 ```text
 $ ibmcloud wsk action invoke proxy -p password wrong -r
+```
+
+```text
 {
     "error": "Password is incorrect!"
 }
@@ -46,6 +49,9 @@ $ ibmcloud wsk action invoke proxy -p password wrong -r
 
 ```text
 $ ibmcloud wsk action invoke proxy -p password secret -p name Bernie -p place Vermont -r
+```
+
+```text
 {
     "greeting": "Hello Bernie from Vermont"
 }
@@ -55,6 +61,9 @@ $ ibmcloud wsk action invoke proxy -p password secret -p name Bernie -p place Ve
 
 ```text
 $ ibmcloud wsk activation list -l 2
+```
+
+```text
 activations
 8387302c81dc4d2d87302c81dc4d2dc6 hello
 e0c603c242c646978603c242c6c6977f proxy

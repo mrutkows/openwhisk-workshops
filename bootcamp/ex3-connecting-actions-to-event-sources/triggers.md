@@ -6,6 +6,9 @@ Let's create a trigger to send _location updates_:
 
 ```text
 $ ibmcloud wsk trigger create locationUpdate
+```
+
+```text
 ok: created trigger locationUpdate
 ```
 
@@ -13,6 +16,9 @@ You can check that the trigger has been created like this:
 
 ```text
 $ ibmcloud wsk trigger list
+```
+
+```text
 triggers
 locationUpdate                         private
 ```
@@ -23,6 +29,9 @@ Let's now fire the trigger by specifying its name and parameters:
 
 ```text
 $ ibmcloud wsk trigger fire locationUpdate -p name "Donald" -p place "Washington, D.C"
+```
+
+```text
 ok: triggered locationUpdate
 ```
 
@@ -30,6 +39,9 @@ Triggers also support default parameters. Firing this trigger without any parame
 
 ```text
 $ ibmcloud wsk trigger update locationUpdate -p name "Donald" -p place "Washington, D.C"
+```
+
+```text
 ok: updated trigger locationUpdate
 $ ibmcloud wsk trigger fire locationUpdate
 ok: triggered locationUpdate

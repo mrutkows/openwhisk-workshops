@@ -10,6 +10,9 @@ Let's demonstrate how to do this now using the `bx wsk` CLI tool…
 
    ```text
    $ ibmcloud wsk package create custom
+   ```
+
+   ```text
    ok: created package custom
    ```
 
@@ -17,6 +20,9 @@ Let's demonstrate how to do this now using the `bx wsk` CLI tool…
 
    ```text
    $ ibmcloud wsk package get --summary custom
+   ```
+
+   ```text
    package /myNamespace/custom
      (parameters: none defined)
    ```
@@ -33,6 +39,9 @@ Let's demonstrate how to do this now using the `bx wsk` CLI tool…
 
    ```text
    $ ibmcloud wsk action create custom/identity identity.js
+   ```
+
+   ```text
    ok: created action custom/identity
    ```
 
@@ -57,6 +66,9 @@ Let's demonstrate how to do this now using the `bx wsk` CLI tool…
 
    ```text
    $ ibmcloud wsk action invoke --result custom/identity
+   ```
+
+   ```text
    {}
    ```
 
@@ -66,6 +78,9 @@ _You can set default parameters for all the entities in a package. You do this b
 
    ```text
    $ ibmcloud wsk package update custom --param city Austin --param country USA
+   ```
+
+   ```text
    ok: updated package custom
    ```
 
@@ -73,6 +88,9 @@ _You can set default parameters for all the entities in a package. You do this b
 
    ```text
    $ ibmcloud wsk package get custom
+   ```
+
+   ```text
    ok: got package custom
    ...
    "parameters": [
@@ -90,6 +108,9 @@ _You can set default parameters for all the entities in a package. You do this b
 
    ```text
    $ ibmcloud wsk action get custom/identity
+   ```
+
+   ```text
    ok: got action custom/identity
    ...
    "parameters": [
@@ -140,6 +161,9 @@ After the actions and feeds that comprise a package are debugged and tested, the
 
    ```text
    $ ibmcloud wsk package update custom --shared yes
+   ```
+
+   ```text
    ok: updated package custom
    ```
 
@@ -147,6 +171,9 @@ After the actions and feeds that comprise a package are debugged and tested, the
 
    ```text
    $ ibmcloud wsk package get custom
+   ```
+
+   ```text
    ok: got package custom
    ...
    "publish": true,

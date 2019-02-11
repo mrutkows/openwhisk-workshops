@@ -10,6 +10,9 @@ As an example, create a rule that calls the `hello` action whenever a location u
 
 ```text
 $ ibmcloud wsk action invoke --result hello --param name Bernie --param place Vermont
+```
+
+```text
 {
     "payload": "Hello, Bernie from Vermont"
 }
@@ -19,6 +22,9 @@ $ ibmcloud wsk action invoke --result hello --param name Bernie --param place Ve
 
 ```text
 $ ibmcloud wsk trigger get locationUpdate
+```
+
+```text
 ok: got trigger a
 {
     "namespace": "user@host.com_dev",
@@ -33,6 +39,9 @@ ok: got trigger a
 
 ```text
 $ ibmcloud wsk rule create myRule locationUpdate hello
+```
+
+```text
 ok: created rule myRule
 ```
 
@@ -40,6 +49,9 @@ ok: created rule myRule
 
 ```text
 $ ibmcloud wsk rule get myRule
+```
+
+```text
 ok: got rule myRule
 {
     "namespace": "user@host.com_dev",
@@ -64,6 +76,9 @@ ok: got rule myRule
 
 ```text
 $ ibmcloud wsk trigger fire locationUpdate --param name Donald --param place "Washington, D.C."
+```
+
+```text
 ok: triggered /_/locationUpdate with id 5c153c01d76d49dc953c01d76d99dc34
 ```
 
@@ -71,6 +86,9 @@ ok: triggered /_/locationUpdate with id 5c153c01d76d49dc953c01d76d99dc34
 
 ```text
 $ ibmcloud wsk activation list --limit 2
+```
+
+```text
 activations
 5ee74025c2384f30a74025c2382f30c1 hello
 5c153c01d76d49dc953c01d76d99dc34 locationUpdate
@@ -82,6 +100,9 @@ We can see the trigger activation \(`5c153c01d76d49dc953c01d76d99dc34`\) is reco
 
 ```text
 $ ibmcloud wsk activation result 5ee74025c2384f30a74025c2382f30c1
+```
+
+```text
 {
    "payload": "Hello, Donald from Washington, D.C."
 }
@@ -93,11 +114,20 @@ Activation records for triggers store the rules and actions fired for an event a
 
 ```text
 $ ibmcloud wsk activation result 5c153c01d76d49dc953c01d76d99dc34
+```
+
+```text
 {
     "name": "Donald",
     "place": "Washington, D.C."
 }
+```
+
+```text
 $ ibmcloud wsk activation logs 5c153c01d76d49dc953c01d76d99dc34
+```
+
+```text
 {"statusCode":0,"success":true,"activationId":"5ee74025c2384f30a74025c2382f30c1","rule":"user@host.com_dev/myRule","action":"user@host.com_dev/hello"}
 ```
 
@@ -109,6 +139,9 @@ You can also use rules with sequences. For example, one can create an action seq
 
 ```text
 $ ibmcloud wsk action create recordLocationAndHello --sequence /whisk.system/utils/echo,hello
+```
+
+```text
 $ ibmcloud wsk rule create anotherRule locationUpdate recordLocationAndHello
 ```
 
@@ -126,6 +159,9 @@ $ ibmcloud wsk rule disable myRule
 
 ```text
 $ ibmcloud wsk trigger fire locationUpdate --param name Donald --param place "Washington, D.C."
+```
+
+```text
 ok: triggered /_/locationUpdate with id 53f85c39087d4c15b85c39087dac1571
 ```
 
@@ -133,6 +169,9 @@ ok: triggered /_/locationUpdate with id 53f85c39087d4c15b85c39087dac1571
 
 ```text
 $ ibmcloud wsk activation list --limit 2
+```
+
+```text
 activations
 5ee74025c2384f30a74025c2382f30c1 hello
 5c153c01d76d49dc953c01d76d99dc34 locationUpdate

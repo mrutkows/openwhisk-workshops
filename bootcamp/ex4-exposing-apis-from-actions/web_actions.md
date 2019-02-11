@@ -6,6 +6,9 @@ Let's turn the `hello` action into a web action. Once it has been converted, we 
 
 ```text
 $ ibmcloud wsk action update hello --web true
+```
+
+```text
 ok: updated action hello
 ```
 
@@ -13,6 +16,9 @@ ok: updated action hello
 
 ```text
 $ ibmcloud wsk action get hello --url
+```
+
+```text
 ok: got action hello
 https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello
 ```
@@ -21,6 +27,9 @@ https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello
 
 ```text
 $ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello.json?name=Bernie"
+```
+
+```text
 {
   "message": "Hello Bernie from Vermont!"
 }
@@ -30,6 +39,9 @@ $ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/
 
 ```text
 $ ibmcloud wsk action update hello --web false
+```
+
+```text
 ok: updated action hello
 ```
 
@@ -37,6 +49,9 @@ ok: updated action hello
 
 ```text
 $ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello.json?name=Bernie"
+```
+
+```text
 {
   "error": "The requested resource does not exist.",
   "code": 4452991
@@ -95,6 +110,9 @@ function main() {
 
 ```text
 $ ibmcloud wsk action create redirect action.js --web true
+```
+
+```text
 ok: created action redirect
 ```
 
@@ -102,6 +120,9 @@ ok: created action redirect
 
 ```text
 $ ibmcloud wsk action get redirect --url
+```
+
+```text
 ok: got action redirect
 https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/redirect
 ```
@@ -110,6 +131,9 @@ https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/redirect
 
 ```text
 $ curl -v https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/redirect
+```
+
+```text
 < HTTP/1.1 302 Found
 < X-Backside-Transport: OK OK
 < Connection: Keep-Alive
@@ -139,11 +163,17 @@ function main() {
 
 ```text
 $ ibmcloud wsk action create html action.js --web true
+```
+
+```text
 ok: created action html
 ```
 
 ```text
 $ ibmcloud wsk action get html --url
+```
+
+```text
 ok: got action html
 https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/html
 ```
@@ -152,6 +182,9 @@ https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/html
 
 ```text
 $ curl https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/html
+```
+
+```text
 <html><body>Hello World!</body></html>
 ```
 
@@ -173,6 +206,9 @@ function main(params) {
 
 ```text
 $ ibmcloud wsk action create manual action.js --web true
+```
+
+```text
 ok: created action manual
 ```
 
@@ -180,6 +216,9 @@ ok: created action manual
 
 ```text
 $ ibmcloud wsk action get manual --url
+```
+
+```text
 ok: got action manual
 https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/manual
 ```
@@ -188,6 +227,9 @@ https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/manual
 
 ```text
 $ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/manual?hello=world"
+```
+
+```text
 {
   "__ow_method": "get",
   "__ow_headers": {
@@ -209,6 +251,9 @@ $ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/
 
 ```text
 $ curl -XPOST "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/manual/subpath"
+```
+
+```text
 {
   "__ow_method": "post",
   "__ow_headers": {
