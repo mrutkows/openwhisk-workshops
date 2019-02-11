@@ -12,7 +12,7 @@ This dashboard shows activations within a region, org and space. Developers can 
 
 HTTP endpoints for web actions can be created and managed through the IBM Cloud Functions Web UI. Using this interface is often a lot more intuitive than using the CLI tool for managing more complex APIs.
 
-1. Select "APIs" from the left-hand menu panel on the homepage.
+Select "APIs" from the left-hand menu panel on the homepage.
 
 ![API homepage](../../.gitbook/assets/apis-homepage.png)
 
@@ -31,7 +31,7 @@ Using the menu on the left-hand side, different properties for the API can be ac
 
 ### Creating APIs
 
-1. Click the "Create API" from the [APIs homepage](https://console.bluemix.net/openwhisk/apimanagement).
+Click the "Create API" from the [APIs homepage](https://console.bluemix.net/openwhisk/apimanagement).
 
 In this page, API details can either be filled out manually or imported from an existing Swagger file.
 
@@ -44,7 +44,7 @@ In this page, API details can either be filled out manually or imported from an 
 
 Using the API management create page, security, rate limiting, CORS or oauth support can be configured.
 
-1. Click the "Save" button to create your API.
+Click the "Save" button to create your API.
 
 ![Creating an API](../../.gitbook/assets/create-apis.gif)
 

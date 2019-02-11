@@ -8,7 +8,7 @@ Actions in public packages can be used by anyone, the caller pays the invocation
 
 Using `ibmcloud wsk` CLI you can get a list of packages in a namespace, list the entities in a package and get a description of the entities within a package.
 
-1. Get a list of packages in the `/whisk.system` namespace.
+Get a list of packages in the `/whisk.system` namespace.
 
 ```text
 $ ibmcloud wsk package list /whisk.system
@@ -32,7 +32,7 @@ packages
 /whisk.system/messaging                                                shared
 ```
 
-1. Get a list of entities in the `/whisk.system/cloudant` package.
+Get a list of entities in the `/whisk.system/cloudant` package.
 
 ```text
 $ ibmcloud wsk package get --summary /whisk.system/cloudant
@@ -56,7 +56,7 @@ This output shows that the Cloudant package provides the actions `read` and `wri
 
 The Cloudant package also defines the parameters `username`, `password`, `host`, and `dbname`. These parameters must be specified for the actions and feeds to be meaningful. The parameters allow the actions to operate on a specific Cloudant account, for example.
 
-1. Get a description of the `/whisk.system/cloudant/read` action.
+Get a description of the `/whisk.system/cloudant/read` action.
 
 ```text
 $ ibmcloud wsk action get --summary /whisk.system/cloudant/read
@@ -75,44 +75,44 @@ You can invoke actions in a package, just as with other actions. The next few st
 
 1. Get a description of the `/whisk.system/samples/greeting` action.
 
-```text
-$ ibmcloud wsk action get --summary /whisk.system/samples/greeting
-```
+   ```text
+   $ ibmcloud wsk action get --summary /whisk.system/samples/greeting
+   ```
 
-```text
-action /whisk.system/samples/greeting: Returns a friendly greeting
-   (parameters: name, place)
-```
+   ```text
+   action /whisk.system/samples/greeting: Returns a friendly greeting
+      (parameters: name, place)
+   ```
 
-Notice that the `greeting` action takes two parameters: `name` and `place`.
+   Notice that the `greeting` action takes two parameters: `name` and `place`.
 
-1. Invoke the action without any parameters.
+2. Invoke the action without any parameters.
 
-```text
-$ ibmcloud wsk action invoke --result /whisk.system/samples/greeting
-```
+   ```text
+   $ ibmcloud wsk action invoke --result /whisk.system/samples/greeting
+   ```
 
-```text
-{
-    "payload": "Hello, stranger from somewhere!"
-}
-```
+   ```text
+   {
+       "payload": "Hello, stranger from somewhere!"
+   }
+   ```
 
-The output is a generic message because no parameters were specified.
+   The output is a generic message because no parameters were specified.
 
-1. Invoke the action with parameters.
+3. Invoke the action with parameters.
 
-```text
-$ ibmcloud wsk action invoke --result /whisk.system/samples/greeting --param name Bernie --param place Vermont
-```
+   ```text
+   $ ibmcloud wsk action invoke --result /whisk.system/samples/greeting --param name Bernie --param place Vermont
+   ```
 
-```text
-{
-    "payload": "Hello, Bernie from Vermont!"
-}
-```
+   ```text
+   {
+       "payload": "Hello, Bernie from Vermont!"
+   }
+   ```
 
-Notice that the output uses the `name` and `place` parameters that were passed to the action.
+   Notice that the output uses the `name` and `place` parameters that were passed to the action.
 
 ## Creating and using package bindings
 
@@ -124,60 +124,60 @@ In the following simple example, you bind to the `/whisk.system/samples` package
 
 1. Bind to the `/whisk.system/samples` package and set a default `place` parameter value.
 
-```text
-$ ibmcloud wsk package bind /whisk.system/samples valhallaSamples --param place Valhalla
-```
+   ```text
+   $ ibmcloud wsk package bind /whisk.system/samples valhallaSamples --param place Valhalla
+   ```
 
-```text
-ok: created binding valhallaSamples
-```
+   ```text
+   ok: created binding valhallaSamples
+   ```
 
-1. Get a description of the package binding.
+2. Get a description of the package binding.
 
-```text
-$ ibmcloud wsk package get --summary valhallaSamples
-```
+   ```text
+   $ ibmcloud wsk package get --summary valhallaSamples
+   ```
 
-```text
-package /namespace/valhallaSamples: Returns a result based on parameter place
-   (parameters: *place)
- action /namespace/valhallaSamples/helloWorld: Demonstrates logging facilities
-    (parameters: payload)
- action /namespace/valhallaSamples/greeting: Returns a friendly greeting
-    (parameters: name, place)
- action /namespace/valhallaSamples/curl: Curl a host url
-    (parameters: payload)
- action /namespace/valhallaSamples/wordCount: Count words in a string
-    (parameters: payload)
-```
+   ```text
+   package /namespace/valhallaSamples: Returns a result based on parameter place
+      (parameters: *place)
+    action /namespace/valhallaSamples/helloWorld: Demonstrates logging facilities
+       (parameters: payload)
+    action /namespace/valhallaSamples/greeting: Returns a friendly greeting
+       (parameters: name, place)
+    action /namespace/valhallaSamples/curl: Curl a host url
+       (parameters: payload)
+    action /namespace/valhallaSamples/wordCount: Count words in a string
+       (parameters: payload)
+   ```
 
-Notice that all the actions in the `/whisk.system/samples` package are available in the `valhallaSamples` package binding.
+   Notice that all the actions in the `/whisk.system/samples` package are available in the `valhallaSamples` package binding.  
 
-1. Invoke an action in the package binding.
+3. Invoke an action in the package binding
 
-```text
-$ ibmcloud wsk action invoke --result valhallaSamples/greeting --param name Odin
-```
+   ```text
+   $ ibmcloud wsk action invoke --result valhallaSamples/greeting --param name Odin
+   ```
 
-```text
-{
-    "payload": "Hello, Odin from Valhalla!"
-}
-```
+   ```text
+   {
+       "payload": "Hello, Odin from Valhalla!"
+   }
+   ```
 
-Notice from the result that the action inherits the `place` parameter you set when you created the `valhallaSamples` package binding.
+   Notice from the result that the action inherits the `place` parameter you set when you created the `valhallaSamples` package binding.  
 
-1. Invoke an action and overwrite the default parameter value.
+4. Invoke an action and overwrite the default parameter value.
 
-```text
-$ ibmcloud wsk action invoke --result valhallaSamples/greeting --param name Odin --param place Asgard
-```
+   ```text
+   $ ibmcloud wsk action invoke --result valhallaSamples/greeting --param name Odin --param place Asgard
+   ```
 
-```text
-{
-    "payload": "Hello, Odin from Asgard!"
-}
-```
+   ```text
+   {
+       "payload": "Hello, Odin from Asgard!"
+   }
+   ```
 
-Notice that the `place` parameter value that is specified with the action invocation overwrites the default value set in the `valhallaSamples` package binding.
+   Notice that the `place` parameter value that is specified with the action invocation overwrites the default value set in the `valhallaSamples` package binding.
 

@@ -1,12 +1,12 @@
 # Triggers
 
-1. Select "Triggers" from the left-hand menu panel on the homepage.
+Select "Triggers" from the left-hand menu panel on the homepage.
 
 [This page](https://console.bluemix.net/openwhisk/triggers) is the management page for triggers. It shows triggers within the chosen region, org and space.
 
 ![Triggers Overview Page](../../.gitbook/assets/triggers-overview.png)
 
-1. Select a trigger from the page to move to the trigger details page.
+Select a trigger from the page to move to the trigger details page.
 
 ## Details Overview
 

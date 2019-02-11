@@ -6,36 +6,36 @@ Review the following steps and examples to create your first JavaScript action.
 
 1. Create a JavaScript file with the following content. For this example, the file name is 'hello.js'.
 
-```javascript
-function main() {
-    return {payload: 'Hello world'};
-}
-```
+   ```text
+   function main() {
+       return {payload: 'Hello world'};
+   }
+   ```
 
-The JavaScript file might contain additional functions. However, by convention, a function called `main` is the default entry point for the action.
+   The JavaScript file might contain additional functions. However, by convention, a function called `main` is the default entry point for the action.
 
-1. Create an action from the following JavaScript function. For this example, the action is called 'hello'.
+2. Create an action from the following JavaScript function. For this example, the action is called 'hello'.
 
-```text
-$ ibmcloud wsk action create hello hello.js
-```
+   ```text
+   $ ibmcloud wsk action create hello hello.js
+   ```
 
-```text
-ok: created action hello
-```
+   ```text
+   ok: created action hello
+   ```
 
-1. List the actions that you have created:
+3. List the actions that you have created:
 
-```text
-$ ibmcloud wsk action list
-```
+   ```text
+   $ ibmcloud wsk action list
+   ```
 
-```text
-actions
-hello       private
-```
+   ```text
+   actions
+   hello       private
+   ```
 
-You can see the `hello` action you just created.
+   You can see the `hello` action you just created.
 
 ## Invoking Actions
 
@@ -45,13 +45,13 @@ You can invoke actions with a _blocking_ invocation \(i.e., request/response sty
 
 1. Invoke the `hello` action using the command-line as a blocking activation.
 
-```text
-$ ibmcloud wsk action invoke --blocking hello
-```
+   ```text
+   $ ibmcloud wsk action invoke --blocking hello
+   ```
 
-```text
-ok: invoked hello with id 44794bd6aab74415b4e42a308d880e5b
-```
+   ```text
+   ok: invoked hello with id 44794bd6aab74415b4e42a308d880e5b
+   ```
 
 ```text
 {
@@ -74,25 +74,25 @@ If you don't need the action result right away, you can omit the `—blocking` f
 
 1. Invoke the `hello` action using the command-line as a non-blocking activation.
 
-```text
-$ ibmcloud wsk action invoke hello
-```
+   ```text
+   $ ibmcloud wsk action invoke hello
+   ```
 
-```text
-ok: invoked hello with id 6bf1f670ee614a7eb5af3c9fde813043
-```
+   ```text
+   ok: invoked hello with id 6bf1f670ee614a7eb5af3c9fde813043
+   ```
 
-1. Retrieve the activation result
+2. Retrieve the activation result
 
-```text
-$ ibmcloud wsk activation result 6bf1f670ee614a7eb5af3c9fde813043
-```
+   ```text
+   $ ibmcloud wsk activation result 6bf1f670ee614a7eb5af3c9fde81304
+   ```
 
-```text
-{
-    "payload": "Hello world"
-}
-```
+   ```text
+   {
+       "payload": "Hello world"
+   }
+   ```
 
 To access the most recent activation record, activation results or activation logs, use the `--last` or `-l` flag.
 

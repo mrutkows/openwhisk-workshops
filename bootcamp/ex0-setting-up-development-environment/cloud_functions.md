@@ -2,38 +2,38 @@
 
 ## Install IBM Cloud Functions CLI plugin
 
-1. Use this command to install the Cloud Functions plugin for the IBM Cloud CLI.
+Use this command to install the Cloud Functions plugin for the IBM Cloud CLI.
 
-   ```text
-   $ ibmcloud plugin install cloud-functions
-   ```
+```text
+$ ibmcloud plugin install cloud-functions
+```
 
-   ```text
-   Looking up 'cloud-functions' from repository 'Bluemix'...
-   Plug-in 'cloud-functions 1.0.7' found in repository 'Bluemix'
-   Attempting to download the binary file...
-    11.13 MiB / 11.13 MiB [=================================================================================] 100.00% 9s
-   11665633 bytes downloaded
-   Installing binary...
-   OK
-   Plug-in 'cloud-functions 1.0.7' was successfully installed into /home/user/.bluemix/plugins/cloud-functions.
-   ```
+```text
+Looking up 'cloud-functions' from repository 'Bluemix'...
+Plug-in 'cloud-functions 1.0.7' found in repository 'Bluemix'
+Attempting to download the binary file...
+ 11.13 MiB / 11.13 MiB [=================================================================================] 100.00% 9s
+11665633 bytes downloaded
+Installing binary...
+OK
+Plug-in 'cloud-functions 1.0.7' was successfully installed into /home/user/.bluemix/plugins/cloud-functions.
+```
 
 _This plugin provides the_ [_Apache OpenWhisk CLI_](https://github.com/apache/incubator-openwhisk/blob/master/docs/cli.md) _as a sub-command under the IBM Cloud CLI. Platform credentials are provided automatically by the IBM Cloud CLI._
 
 ## Test IBM Cloud Functions From The CLI
 
-1. Run the following command to invoke a test function from the command-line.
+Run the following command to invoke a test function from the command-line.
 
-   ```text
-   $ ibmcloud wsk action invoke whisk.system/utils/echo -p message hello --result
-   ```
+```text
+$ ibmcloud wsk action invoke whisk.system/utils/echo -p message hello --result
+```
 
-   ```text
-   {
-       "message": "hello"
-   }
-   ```
+```text
+{
+    "message": "hello"
+}
+```
 
 _If this command executes successfully, you have verified that the IBM Cloud CLI and Cloud Functions plugin have been installed and configured correctly. If this does not work, please contact the workshop organiser to provide assistance!_
 

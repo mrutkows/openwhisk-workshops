@@ -4,7 +4,7 @@
 
 Custom packages can be used to group your own actions, manage default parameters and share entities with other users.
 
-Let's demonstrate how to do this now using the `bx wsk` CLI tool…
+Let's demonstrate how to do this now using the `ibmcloud wsk` CLI tool…
 
 1. Create a package called "custom".
 
@@ -180,9 +180,9 @@ After the actions and feeds that comprise a package are debugged and tested, the
    ...
    ```
 
-Others can now use your `custom` package, including binding to the package or directly invoking an action in it. Other users must know the fully qualified names of the package to bind it or invoke actions in it. Actions and feeds within a shared package are _public_. If the package is private, then all of its contents are also private.
+   Others can now use your `custom` package, including binding to the package or directly invoking an action in it. Other users must know the fully qualified names of the package to bind it or invoke actions in it. Actions and feeds within a shared package are _public_. If the package is private, then all of its contents are also private.  
 
-1. Get a description of the package to show the fully qualified names of the package and action.
+3. Get a description of the package to show the fully qualified names of the package and action.
 
    ```text
    $ ibmcloud wsk package get --summary custom

@@ -4,59 +4,60 @@ Let's turn the `hello` action into a web action. Once it has been converted, we 
 
 1. Update the action to set the `—web` flag to `true`.
 
-```text
-$ ibmcloud wsk action update hello --web true
-```
+   ```text
+   $ ibmcloud wsk action update hello --web true
+   ```
 
-```text
-ok: updated action hello
-```
+   ```text
+   ok: updated action hello
+   ```
 
-1. Retrieve the web action URL exposed by the platform for this action.
+2. Retrieve the web action URL exposed by the platform for this action.
 
-```text
-$ ibmcloud wsk action get hello --url
-```
+   ```text
+   $ ibmcloud wsk action get hello --url
+   ```
 
-```text
-ok: got action hello
-https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello
-```
+   ```text
+   ok: got action hello
+   https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello
+   ```
 
-1. Invoke the web action URL with the JSON extension, passing in query parameters for `name` and `place`.
+3. Invoke the web action URL with the JSON extension, passing in query parameters for `name` and `place`.  
 
-```text
-$ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello.json?name=Bernie"
-```
 
-```text
-{
-  "message": "Hello Bernie from Vermont!"
-}
-```
+   ```text
+   $ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello.json?name=Bernie"
+   ```
 
-1. Disable web action support.
+   ```text
+   {
+     "message": "Hello Bernie from Vermont!"
+   }
+   ```
 
-```text
-$ ibmcloud wsk action update hello --web false
-```
+4. Disable web action support.
 
-```text
-ok: updated action hello
-```
+   ```text
+   $ ibmcloud wsk action update hello --web false
+   ```
 
-1. Verify the action is not externally accessible with authentication.
+   ```text
+   ok: updated action hello
+   ```
 
-```text
-$ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello.json?name=Bernie"
-```
+5. Verify the action is not externally accessible with authentication.
 
-```text
-{
-  "error": "The requested resource does not exist.",
-  "code": 4452991
-}
-```
+   ```text
+   $ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello.json?name=Bernie"
+   ```
+
+   ```text
+   {
+     "error": "The requested resource does not exist.",
+     "code": 4452991
+   }
+   ```
 
 ## Content extensions
 
@@ -97,178 +98,172 @@ Web actions have a [lot more features](https://github.com/apache/incubator-openw
 
 1. Create a new web action from the following source code.
 
-### Node.js example
+   ```text
+   function main() {
+       return {
+           headers: { location: "http://openwhisk.org" },
+           statusCode: 302
+     };
+   }
+   ```
 
-```javascript
-function main() {
-    return {
-        headers: { location: "http://openwhisk.org" },
-        statusCode: 302
-  };
-}
-```
+   ```text
+   $ ibmcloud wsk action create redirect action.js --web true
+   ```
 
-```text
-$ ibmcloud wsk action create redirect action.js --web true
-```
+   ```text
+   ok: created action redirect
+   ```
 
-```text
-ok: created action redirect
-```
+2. Retrieve URL for new web action
 
-1. Retrieve URL for new web action
+   ```text
+   $ ibmcloud wsk action get redirect --url
+   ```
 
-```text
-$ ibmcloud wsk action get redirect --url
-```
+   ```text
+   ok: got action redirect
+   https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/redirect
+   ```
 
-```text
-ok: got action redirect
-https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/redirect
-```
+3. Check HTTP response is HTTP redirect.
 
-1. Check HTTP response is HTTP redirect.
+   ```text
+   $ curl -v https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/redirect
+   ```
 
-```text
-$ curl -v https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/redirect
-```
-
-```text
-< HTTP/1.1 302 Found
-< X-Backside-Transport: OK OK
-< Connection: Keep-Alive
-< Transfer-Encoding: chunked
-< Server: nginx/1.11.13
-< Date: Fri, 23 Feb 2018 11:23:24 GMT
-< Access-Control-Allow-Origin: *
-< Access-Control-Allow-Methods: OPTIONS, GET, DELETE, POST, PUT, HEAD, PATCH
-< Access-Control-Allow-Headers: Authorization, Content-Type
-< location: http://openwhisk.org
-```
+   ```text
+   < HTTP/1.1 302 Found
+   < X-Backside-Transport: OK OK
+   < Connection: Keep-Alive
+   < Transfer-Encoding: chunked
+   < Server: nginx/1.11.13
+   < Date: Fri, 23 Feb 2018 11:23:24 GMT
+   < Access-Control-Allow-Origin: *
+   < Access-Control-Allow-Methods: OPTIONS, GET, DELETE, POST, PUT, HEAD, PATCH
+   < Access-Control-Allow-Headers: Authorization, Content-Type
+   < location: http://openwhisk.org
+   ```
 
 ## Example - HTML response
 
 1. Create a new web action from the following source code.
 
-### Node.js example
+   ```text
+   function main() {
+       let html = "<html><body>Hello World!</body></html>"
+       return { headers: { "Content-Type": "text/html" },
+                statusCode: 200,
+                body: html };
+   }
+   ```
 
-```javascript
-function main() {
-    let html = "<html><body>Hello World!</body></html>"
-    return { headers: { "Content-Type": "text/html" },
-             statusCode: 200,
-             body: html };
-}
-```
+   ```text
+   $ ibmcloud wsk action create html action.js --web true
+   ```
 
-```text
-$ ibmcloud wsk action create html action.js --web true
-```
+   ```text
+   ok: created action html
+   ```
 
-```text
-ok: created action html
-```
+   ```text
+   $ ibmcloud wsk action get html --url
+   ```
 
-```text
-$ ibmcloud wsk action get html --url
-```
+   ```text
+   ok: got action html
+   https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/html
+   ```
 
-```text
-ok: got action html
-https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/html
-```
+2. Check HTTP response is HTML.
 
-1. Check HTTP response is HTML.
+   ```text
+   $ curl https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/html
+   ```
 
-```text
-$ curl https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/html
-```
-
-```text
-<html><body>Hello World!</body></html>
-```
+   ```text
+   <html><body>Hello World!</body></html>
+   ```
 
 ## Example - Manual JSON response
 
 1. Create a new web action from the following source code.
 
-### Node.js
+   ```text
+   function main(params) { 
+       return {
+           statusCode: 200,
+           headers: { 'Content-Type': 'application/json' },
+           body: params
+       };
+   }
+   ```
 
-```javascript
-function main(params) { 
-    return {
-        statusCode: 200,
-        headers: { 'Content-Type': 'application/json' },
-        body: params
-    };
-}
-```
+   ```text
+   $ ibmcloud wsk action create manual action.js --web true
+   ```
 
-```text
-$ ibmcloud wsk action create manual action.js --web true
-```
+   ```text
+   ok: created action manual
+   ```
 
-```text
-ok: created action manual
-```
+2. Retrieve URL for new web action
 
-1. Retrieve URL for new web action
+   ```text
+   $ ibmcloud wsk action get manual --url
+   ```
 
-```text
-$ ibmcloud wsk action get manual --url
-```
+   ```text
+   ok: got action manual
+   https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/manual
+   ```
 
-```text
-ok: got action manual
-https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/manual
-```
+3. Check HTTP response is JSON.
 
-1. Check HTTP response is JSON.
+   ```text
+   $ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/manual?hello=world"
+   ```
 
-```text
-$ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/manual?hello=world"
-```
+   ```text
+   {
+     "__ow_method": "get",
+     "__ow_headers": {
+       "accept": "*/*",
+       "user-agent": "curl/7.54.0",
+       "x-client-ip": "92.11.100.114",
+       "x-forwarded-proto": "https",
+       "host": "openwhisk.ng.bluemix.net:443",
+       "cache-control": "no-transform",
+       "via": "1.1 DwAAAD0oDAI-",
+       "x-global-transaction-id": "2654586489",
+       "x-forwarded-for": "92.11.100.114"
+     },
+     "__ow_path": "",
+     "hello": "world"
+   ```
 
-```text
-{
-  "__ow_method": "get",
-  "__ow_headers": {
-    "accept": "*/*",
-    "user-agent": "curl/7.54.0",
-    "x-client-ip": "92.11.100.114",
-    "x-forwarded-proto": "https",
-    "host": "openwhisk.ng.bluemix.net:443",
-    "cache-control": "no-transform",
-    "via": "1.1 DwAAAD0oDAI-",
-    "x-global-transaction-id": "2654586489",
-    "x-forwarded-for": "92.11.100.114"
-  },
-  "__ow_path": "",
-  "hello": "world"
-```
+4. Use other HTTP methods or URI paths to show the parameters change.
 
-1. Use other HTTP methods or URI paths to show the parameters change.
+   ```text
+   $ curl -XPOST "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/manual/subpath"
+   ```
 
-```text
-$ curl -XPOST "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/manual/subpath"
-```
-
-```text
-{
-  "__ow_method": "post",
-  "__ow_headers": {
-    "accept": "*/*",
-    "user-agent": "curl/7.54.0",
-    "x-client-ip": "92.11.100.114",
-    "x-forwarded-proto": "https",
-    "host": "openwhisk.ng.bluemix.net:443",
-    "via": "1.1 AgAAAB+7NgA-",
-    "x-global-transaction-id": "2897764571",
-    "x-forwarded-for": "92.11.100.114"
-  },
-  "__ow_path": "/subpath",
-  "hello": "world"
-```
+   ```text
+   {
+     "__ow_method": "post",
+     "__ow_headers": {
+       "accept": "*/*",
+       "user-agent": "curl/7.54.0",
+       "x-client-ip": "92.11.100.114",
+       "x-forwarded-proto": "https",
+       "host": "openwhisk.ng.bluemix.net:443",
+       "via": "1.1 AgAAAB+7NgA-",
+       "x-global-transaction-id": "2897764571",
+       "x-forwarded-for": "92.11.100.114"
+     },
+     "__ow_path": "/subpath",
+     "hello": "world"
+   ```
 
 🎉🎉🎉 **OpenWhisk Web Actions are an awesome feature. Exposing public APIs from actions is minimal effort. Let's finish off this section by looking at an additional approach, using an API Gateway.** 🎉🎉🎉
 

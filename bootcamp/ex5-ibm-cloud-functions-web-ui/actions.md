@@ -1,12 +1,11 @@
 # Actions
 
-1. Select "Actions" from the left-hand menu panel on the homepage.
-
-[This page](https://console.bluemix.net/openwhisk/actions) is the management page for actions. It shows actions within the chosen region, org and space.
+Select "Actions" from the left-hand menu panel on the homepage.[  
+This page](https://console.bluemix.net/openwhisk/actions) is the management page for actions. It shows actions within the chosen region, org and space.
 
 ![action details page](../../.gitbook/assets/action-overview.png)
 
-1. Select an action from the page to move to the action details page.
+Select an action from the page to move to the action details page.
 
 ## Details overview
 
@@ -27,7 +26,7 @@ Using the menu on the left-hand side, different properties for the action can be
 
 ## Invoking actions
 
-1. Click the "Invoke" button to invoke an action and display the resulting activation record.
+Click the "Invoke" button to invoke an action and display the resulting activation record.
 
 _Input parameters to invocations can be modified using the "Change Input" button._
 

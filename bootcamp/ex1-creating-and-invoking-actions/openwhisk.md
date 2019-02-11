@@ -12,62 +12,61 @@ Let's look an example of creating a "proxy" action which invokes another action 
 
 1. Create the following new action `proxy` from the following source files.
 
-### Node.js
+   ```text
+   var openwhisk = require('openwhisk');
 
-```javascript
-var openwhisk = require('openwhisk');
-
-function main(params) {
-  if (params.password !== 'secret') {
-    throw new Error("Password incorrect!")
-  }
+   function main(params) {
+     if (params.password !== 'secret') {
+       throw new Error("Password incorrect!")
+     }
   
-  var ow = openwhisk();
-  return ow.actions.invoke({name: "hello", blocking: true, result: true, params: params})
-}
-```
+     var ow = openwhisk();
+     return ow.actions.invoke({name: "hello", blocking: true, result: true, params: params})
+   }
+   ```
 
-_The JavaScript library for Apache OpenWhisk is here:_ [_https://github.com/apache/incubator-openwhisk-client-js/_](https://github.com/apache/incubator-openwhisk-client-js/)_._ _This library is pre-installed in the IBM Cloud Functions runtime and does not need to be manually included._
+   _The JavaScript library for Apache OpenWhisk is here:_ [_https://github.com/apache/incubator-openwhisk-client-js/_](https://github.com/apache/incubator-openwhisk-client-js/)_._ _This library is pre-installed in the IBM Cloud Functions runtime and does not need to be manually included._  
 
-```text
-$ ibmcloud wsk action create proxy proxy.js
-```
 
-1. Invoke the proxy with an incorrect password.
+   ```text
+   $ ibmcloud wsk action create proxy proxy.js
+   ```
 
-```text
-$ ibmcloud wsk action invoke proxy -p password wrong -r
-```
+2. Invoke the proxy with an incorrect password.
 
-```text
-{
-    "error": "Password is incorrect!"
-}
-```
+   ```text
+   $ ibmcloud wsk action invoke proxy -p password wrong -r
+   ```
 
-1. Invoke the proxy with the correct password.
+   ```text
+   {
+       "error": "Password is incorrect!"
+   }
+   ```
 
-```text
-$ ibmcloud wsk action invoke proxy -p password secret -p name Bernie -p place Vermont -r
-```
+3. Invoke the proxy with the correct password.
 
-```text
-{
-    "greeting": "Hello Bernie from Vermont"
-}
-```
+   ```text
+   $ ibmcloud wsk action invoke proxy -p password secret -p name Bernie -p place Vermont -r
+   ```
 
-1. Review the activations list to show both actions were invoked.
+   ```text
+   {
+       "greeting": "Hello Bernie from Vermont"
+   }
+   ```
 
-```text
-$ ibmcloud wsk activation list -l 2
-```
+4. Review the activations list to show both actions were invoked.
 
-```text
-activations
-8387302c81dc4d2d87302c81dc4d2dc6 hello
-e0c603c242c646978603c242c6c6977f proxy
-```
+   ```text
+   $ ibmcloud wsk activation list -l 2
+   ```
+
+   ```text
+   activations
+   8387302c81dc4d2d87302c81dc4d2dc6 hello
+   e0c603c242c646978603c242c6c6977f proxy
+   ```
 
 _These libraries can also be used to invoke triggers to fire events from actions._
 

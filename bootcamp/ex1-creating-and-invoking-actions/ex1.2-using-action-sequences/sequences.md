@@ -14,101 +14,99 @@ Using a sequence can remove the need to manually invoke actions and sit idle wai
 
 Let's look at an example of using sequences.
 
-## Node.js
-
 1. Create the file \(`funcs.js`\) with the following contents:
 
-```javascript
-function split(params) {
-  var text = params.text || ""
-  var words = text.split(' ')
-  return { words: words }
-}
+   ```text
+   function split(params) {
+     var text = params.text || ""
+     var words = text.split(' ')
+     return { words: words }
+   }
 
-function reverse(params) {
-  var words = params.words || []
-  var reversed = words.map(word => word.split("").reverse().join(""))
-  return { words: reversed }
-}
+   function reverse(params) {
+     var words = params.words || []
+     var reversed = words.map(word => word.split("").reverse().join(""))
+     return { words: reversed }
+   }
 
-function join(params) {
-  var words = params.words || []
-  var text = words.join(' ')
-  return { text: text }
-}
-```
+   function join(params) {
+     var words = params.words || []
+     var text = words.join(' ')
+     return { text: text }
+   }
+   ```
 
-1. Create the following three actions:
+2. Create the following three actions:
 
-```text
-$ ibmcloud wsk action create split funcs.js --main split
-```
+   ```text
+   $ ibmcloud wsk action create split funcs.js --main split
+   ```
 
-```text
-$ ibmcloud wsk action create reverse funcs.js --main reverse
-```
+   ```text
+   $ ibmcloud wsk action create reverse funcs.js --main reverse
+   ```
 
-```text
-$ ibmcloud wsk action create join funcs.js --main join
-```
+   ```text
+   $ ibmcloud wsk action create join funcs.js --main join
+   ```
 
 ## Creating sequence actions
 
 1. Test each action to verify it is working.
 
-```text
-$ ibmcloud wsk action invoke split --result --param text "Hello world"
-```
+   ```text
+   $ ibmcloud wsk action invoke split --result --param text "Hello world"
+   ```
 
-```text
-{
-    "words": [
-        "Hello",
-        "world"
-    ]
-}
-```
+   ```text
+   {
+       "words": [
+           "Hello",
+           "world"
+       ]
+   }
+   ```
 
-```text
-$ ibmcloud wsk action invoke reverse --result --param words '["hello", "world"]'
-```
+   ```text
+   $ ibmcloud wsk action invoke reverse --result --param words '["hello", "world"]'
+   ```
 
-```text
-{
-    "words": [
-        "olleh",
-        "dlrow"
-    ]
-}
-```
+   ```text
+   {
+       "words": [
+           "olleh",
+           "dlrow"
+       ]
+   }
+   ```
 
-```text
-$ ibmcloud wsk action invoke join --result --param words '["hello", "world"]'
-```
+   ```text
+   $ ibmcloud wsk action invoke join --result --param words '["hello", "world"]'
+   ```
 
-```text
-{
-    "text": "hello world"
-}
-```
+   ```text
+   {
+       "text": "hello world"
+   }
+   ```
 
-1. Create the following action sequence.
+2. Create the following action sequence.
 
-```text
-$ ibmcloud wsk action create reverse_words --sequence split,reverse,join
-```
+   ```text
+   $ ibmcloud wsk action create reverse_words --sequence split,reverse,join
+   ```
 
-1. Test out the action sequence.
+3. Test out the action sequence.
 
-```text
-$ ibmcloud wsk action invoke reverse_words --result --param text "hello world"
-```
+   ```text
+   $ ibmcloud wsk action invoke reverse_words --result --param text "hello world"
+   ```
 
-```text
-{
-    "text": "olleh dlrow"
-}
-```
+   ```text
+   {
+       "text": "olleh dlrow"
+   }
+   ```
 
 Using sequences is a great way to develop re-usable action components that can be joined together into "high-order" actions to create serverless applications.
 
@@ -120,61 +118,59 @@ If any action within the sequences returns an error, the platform returns immedi
 
 Let's look at how this work...
 
-### Node.js
-
 1. Create the file \(`funcs.js`\) with the following contents:
 
-```javascript
-function fail (params) {
-  if (params.fail) {
-      throw new Error("stopping sequence and returning.")
-  }
+   ```text
+   function fail (params) {
+     if (params.fail) {
+         throw new Error("stopping sequence and returning.")
+     }
 
-  return params  
-}
+     return params  
+   }
 
-function end (params) {  
-  return { message: "sequence finished." }
-}
-```
+   function end (params) {  
+     return { message: "sequence finished." }
+   }
+   ```
 
-1. Create the following three actions
+2. Create the following three actions:
 
-```text
-$ ibmcloud wsk action create fail funcs.js --main fail
-```
+   ```text
+   $ ibmcloud wsk action create fail funcs.js --main fail
+   ```
 
-```text
-$ ibmcloud wsk action create end funcs.js --main end
-```
+   ```text
+   $ ibmcloud wsk action create end funcs.js --main end
+   ```
 
-```text
-$ ibmcloud wsk action create example --sequence fail,end
-```
+   ```text
+   $ ibmcloud wsk action create example --sequence fail,end
+   ```
 
-1. Test out the action sequence without `fail` parameter.
+3. Test out the action sequence without `fail` parameter:
 
-```text
-$ ibmcloud wsk action invoke example -r
-```
+   ```text
+   $ ibmcloud wsk action invoke example -r
+   ```
 
-```text
-{
-    "message": "sequence finished."
-}
-```
+   ```text
+   {
+       "message": "sequence finished."
+   }
+   ```
 
-1. Test out the action sequence with `fail` parameter.
+4. Test out the action sequence with `fail` parameter:
 
-```text
-$ ibmcloud wsk action invoke example -r -p fail true
-```
+   ```text
+   $ ibmcloud wsk action invoke example -r -p fail true
+   ```
 
-```text
-{
-    "error": "An error has occurred: Error: stopping sequence and returning."
-}
-```
+   ```text
+   {
+       "error": "An error has occurred: Error: stopping sequence and returning."
+   }
+   ```
 
 🎉🎉🎉 **Sequences are an "advanced" OpenWhisk technique. Congratulations for getting this far! Now let's move on to something all together different, connecting functions to external event sources…** 🎉🎉🎉
 

@@ -8,107 +8,108 @@ As an example, create a rule that calls the `hello` action whenever a location u
 
 1. Check the `hello` action exists and responds to the correct event parameters.
 
-```text
-$ ibmcloud wsk action invoke --result hello --param name Bernie --param place Vermont
-```
+   ```text
+   $ ibmcloud wsk action invoke --result hello --param name Bernie --param place Vermont
+   ```
 
-```text
-{
-    "payload": "Hello, Bernie from Vermont"
-}
-```
+   ```text
+   {
+       "payload": "Hello, Bernie from Vermont"
+   }
+   ```
 
-1. Check the trigger exists.
+2. Check the trigger exists.
 
-```text
-$ ibmcloud wsk trigger get locationUpdate
-```
+   ```text
+   $ ibmcloud wsk trigger get locationUpdate
+   ```
 
-```text
-ok: got trigger a
-{
-    "namespace": "user@host.com_dev",
-    "name": "locationUpdate",
-    "version": "0.0.1",
-    "limits": {},
-    "publish": false
-}
-```
+   ```text
+   ok: got trigger a
+   {
+       "namespace": "user@host.com_dev",
+       "name": "locationUpdate",
+       "version": "0.0.1",
+       "limits": {},
+       "publish": false
+   }
+   ```
 
-1. Create the rule using the command-line. The three parameters are the name of the rule, the trigger, and the action.
+3. Create the rule using the command-line. The three parameters are the name of the rule, the trigger, and the action.
 
-```text
-$ ibmcloud wsk rule create myRule locationUpdate hello
-```
+   ```text
+   $ ibmcloud wsk rule create myRule locationUpdate hello
+   ```
 
-```text
-ok: created rule myRule
-```
+   ```text
+   ok: created rule myRule
+   ```
 
-1. Retrieve rule details to show the trigger and action bound by this rule.
+4. Retrieve rule details to show the trigger and action bound by this rule.
 
-```text
-$ ibmcloud wsk rule get myRule
-```
+   ```text
+   $ ibmcloud wsk rule get myRule
+   ```
 
-```text
-ok: got rule myRule
-{
-    "namespace": "user@host.com_dev",
-    "name": "myRule",
-    "version": "0.0.1",
-    "status": "active",
-    "trigger": {
-        "name": "locationUpdate",
-        "path": "user@host.com_dev"
-    },
-    "action": {
-        "name": "hello",
-        "path": "user@host.com_dev"
-    },
-    "publish": false
-}
-```
+   ```text
+   ok: got rule myRule
+   {
+       "namespace": "user@host.com_dev",
+       "name": "myRule",
+       "version": "0.0.1",
+       "status": "active",
+       "trigger": {
+           "name": "locationUpdate",
+           "path": "user@host.com_dev"
+       },
+       "action": {
+           "name": "hello",
+           "path": "user@host.com_dev"
+       },
+       "publish": false
+   }
+   ```
 
 ## Testing rules
 
-1. Fire the `locationUpdate` trigger. Each time that you fire the trigger with an event, the `hello` action is called with the event parameters.
+1. Fire the `locationUpdate` trigger. Each time that you fire the trigger with an event, the `hello` action is called with the event parameters.  
 
-```text
-$ ibmcloud wsk trigger fire locationUpdate --param name Donald --param place "Washington, D.C."
-```
 
-```text
-ok: triggered /_/locationUpdate with id 5c153c01d76d49dc953c01d76d99dc34
-```
+   ```text
+   $ ibmcloud wsk trigger fire locationUpdate --param name Donald --param place "Washington, D.C."
+   ```
 
-1. Verify that the action was invoked by checking the activations list.
+   ```text
+   ok: triggered /_/locationUpdate with id 5c153c01d76d49dc953c01d76d99dc34
+   ```
 
-```text
-$ ibmcloud wsk activation list --limit 2
-```
+2. Verify that the action was invoked by checking the activations list.
 
-```text
-activations
-5ee74025c2384f30a74025c2382f30c1 hello
-5c153c01d76d49dc953c01d76d99dc34 locationUpdate
-```
+   ```text
+   $ ibmcloud wsk activation list --limit 2
+   ```
 
-We can see the trigger activation \(`5c153c01d76d49dc953c01d76d99dc34`\) is recorded, followed by the `hello` action activation \(`5ee74025c2384f30a74025c2382f30c1`\).
+   ```text
+   activations
+   5ee74025c2384f30a74025c2382f30c1 hello
+   5c153c01d76d49dc953c01d76d99dc34 locationUpdate
+   ```
 
-1. Retrieving the trigger activation record will show the actions and rules invoked from this activation.
+   We can see the trigger activation \(`5c153c01d76d49dc953c01d76d99dc34`\) is recorded, followed by the `hello` action activation \(`5ee74025c2384f30a74025c2382f30c1`\).  
 
-```text
-$ ibmcloud wsk activation result 5ee74025c2384f30a74025c2382f30c1
-```
+3. Retrieving the trigger activation record will show the actions and rules invoked from this activation.
 
-```text
-{
-   "payload": "Hello, Donald from Washington, D.C."
-}
-```
+   ```text
+   $ ibmcloud wsk activation result 5ee74025c2384f30a74025c2382f30c1
+   ```
 
-You can see that the hello action received the event payload and returned the expected string.
+   ```text
+   {
+      "payload": "Hello, Donald from Washington, D.C."
+   }
+   ```
+
+   You can see that the hello action received the event payload and returned the expected string.
 
 Activation records for triggers store the rules and actions fired for an event and the event parameters.
 
@@ -151,33 +152,33 @@ Rules are enabled upon creation but can be disabled and re-enabled using the com
 
 1. Disable the rule connecting the `locationUpdate` trigger and `hello` action.
 
-```text
-$ ibmcloud wsk rule disable myRule
-```
+   ```text
+   $ ibmcloud wsk rule disable myRule
+   ```
 
-1. Fire the trigger again.
+2. Fire the trigger again.
 
-```text
-$ ibmcloud wsk trigger fire locationUpdate --param name Donald --param place "Washington, D.C."
-```
+   ```text
+   $ ibmcloud wsk trigger fire locationUpdate --param name Donald --param place "Washington, D.C."
+   ```
 
-```text
-ok: triggered /_/locationUpdate with id 53f85c39087d4c15b85c39087dac1571
-```
+   ```text
+   ok: triggered /_/locationUpdate with id 53f85c39087d4c15b85c39087dac1571
+   ```
 
-1. Check the activation list there are no new activation records.
+3. Check the activation list there are no new activation records.
 
-```text
-$ ibmcloud wsk activation list --limit 2
-```
+   ```text
+   $ ibmcloud wsk activation list --limit 2
+   ```
 
-```text
-activations
-5ee74025c2384f30a74025c2382f30c1 hello
-5c153c01d76d49dc953c01d76d99dc34 locationUpdate
-```
+   ```text
+   activations
+   5ee74025c2384f30a74025c2382f30c1 hello
+   5c153c01d76d49dc953c01d76d99dc34 locationUpdate
+   ```
 
-The latest activation records were from the previous example.
+   The latest activation records were from the previous example.
 
 _Activation records for triggers are only recorded when they are bound to an active rule._
 

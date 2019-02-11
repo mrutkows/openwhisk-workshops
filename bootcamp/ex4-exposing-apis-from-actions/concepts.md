@@ -10,5 +10,5 @@ Web actions are a simple way to expose public HTTP endpoints from OpenWhisk acti
 
 OpenWhisk comes with an integrated API Gateway. This allows the developers to create new HTTP APIs which map incoming requests to web actions. The API Gateway handles capabilities like routing based on request properties \(URI paths and HTTP method\), user authentication, rate limiting and more. Developers do not need to implement this features within the web action code.
 
-Using the API Gateway is an extension to web actions that allows you to build enterprise high-traffic HTTP APIs with minimal effort using IBM Cloud Functions.
+Using the API Gateway is an extension to web actions that allows you to build enterprise high-traffic HTTP APIs with minimal effort using IBM Cloud Functions. _Note that this feature is quite deep and outside of the scope of this class._
 

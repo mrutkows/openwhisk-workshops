@@ -1,6 +1,6 @@
 # Asynchronous actions
 
-## Returning asynchronous results \(Node.js\)
+## Returning asynchronous results
 
 JavaScript functions that run asynchronously may need to return the activation result after the `main` function has returned. You can accomplish this by returning a Promise in your action.
 
@@ -28,36 +28,36 @@ A call to `reject()` can be used to reject the Promise and signal that the activ
 
 1. Run the following commands to create the action and invoke it:
 
-```text
-$ ibmcloud wsk action create asyncAction asyncAction.js
-```
+   ```text
+   $ ibmcloud wsk action create asyncAction asyncAction.js
+   ```
 
-```text
-$ ibmcloud wsk action invoke --result asyncAction
-```
+   ```text
+   $ ibmcloud wsk action invoke --result asyncAction
+   ```
 
-```text
-{
-    "done": true
-}
-```
+   ```text
+   {
+       "done": true
+   }
+   ```
 
-Notice that you performed a blocking invocation of an asynchronous action.
+   Notice that you performed a blocking invocation of an asynchronous action.  
 
-1. Fetch the last activation log to see how long the async activation took to complete:
+2. Fetch the last activation log to see how long the async activation took to complete:
 
-```text
-$ ibmcloud wsk activation get --last
-```
+   ```text
+   $ ibmcloud wsk activation get --last
+   ```
 
-```text
-{
-     "duration": 2026,
-     ...
-}
-```
+   ```text
+   {
+        "duration": 2026,
+        ...
+   }
+   ```
 
-Checking the `duration` field in the activation record, you can see that this activation took slightly over two seconds to complete.
+   Checking the `duration` field in the activation record, you can see that this activation took slightly over two seconds to complete.
 
 **Actions have a** `timeout` **parameter that enforces the maximum duration for an invocation.** This value defaults to 60 seconds and can be changed to a maximum of 5 minutes.
 
@@ -65,49 +65,49 @@ Let's look at what happens when an action invocation takes longer than the `time
 
 1. Update the `asyncAction` timeout to 1000ms.
 
-```text
-$ ibmcloud wsk action update asyncAction --timeout 1000
-```
+   ```text
+   $ ibmcloud wsk action update asyncAction --timeout 1000
+   ```
 
-```text
-ok: updated action asyncAction
-```
+   ```text
+   ok: updated action asyncAction
+   ```
 
-1. Invoke the action and block on the result.
+2. Invoke the action and block on the result.
 
-```text
-$ ibmcloud wsk action invoke asyncAction --result
-```
+   ```text
+   $ ibmcloud wsk action invoke asyncAction --result
+   ```
 
-```text
-{
-    "error": "The action exceeded its time limits of 1000 milliseconds."
-}
-```
+   ```text
+   {
+       "error": "The action exceeded its time limits of 1000 milliseconds."
+   }
+   ```
 
-The error message returned by the platform indicates the action didn't return a response within the user-specified timeout. If we change the `timeout` back to a value higher than the artificial delay in the function, it should work again.
+   The error message returned by the platform indicates the action didn't return a response within the user-specified timeout. If we change the `timeout` back to a value higher than the artificial delay in the function, it should work again.
 
-1. Update the `asyncAction` timeout to 10000ms.
+3. Update the `asyncAction` timeout to 10000ms.
 
-```text
-$ ibmcloud wsk action update asyncAction --timeout 10000
-```
+   ```text
+   $ ibmcloud wsk action update asyncAction --timeout 10000
+   ```
 
-```text
-ok: updated action asyncAction
-```
+   ```text
+   ok: updated action asyncAction
+   ```
 
-1. Invoke the action and block on the result.
+4. Invoke the action and block on the result.
 
-```text
-$ ibmcloud wsk action invoke asyncAction --result
-```
+   ```text
+   $ ibmcloud wsk action invoke asyncAction --result
+   ```
 
-```text
-{
-    "done": true
-}
-```
+   ```text
+   {
+       "done": true
+   }
+   ```
 
 🎉🎉🎉 **Asynchronous actions are necessary for calling other APIs or cloud services. Don't forget about that timeout though! Let's have a look at using an asynchronous action to invoke another API…** 🎉🎉🎉
 

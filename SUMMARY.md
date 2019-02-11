@@ -25,7 +25,6 @@
   * [Exposing APIs from Actions](bootcamp/ex4-exposing-apis-from-actions/README.md)
     * [Concepts](bootcamp/ex4-exposing-apis-from-actions/concepts.md)
     * [Web Actions](bootcamp/ex4-exposing-apis-from-actions/web_actions.md)
-    * [API Gateway](bootcamp/ex4-exposing-apis-from-actions/api_gateway.md)
   * [IBM Cloud Functions Web UI](bootcamp/ex5-ibm-cloud-functions-web-ui/README.md)
     * [Actions](bootcamp/ex5-ibm-cloud-functions-web-ui/actions.md)
     * [Triggers](bootcamp/ex5-ibm-cloud-functions-web-ui/triggers.md)
