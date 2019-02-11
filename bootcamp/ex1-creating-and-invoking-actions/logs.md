@@ -2,7 +2,7 @@
 
 Application logs are essential to debugging production issues. In IBM Cloud Functions, all output written to `stdout` and `stderr` by actions is available in the activation records.
 
-## Creating Activation Logs
+## Creating activation logs
 
 1. Create a new action \(`logs`\) from the following source files.
 
@@ -30,7 +30,7 @@ $ ibmcloud wsk action invoke -r logs -p hello world
 }
 ```
 
-## Accessing Activation Logs
+## Accessing activation logs
 
 1. Retrieve activation record to verify logs have been recorded.
 
@@ -55,7 +55,7 @@ $ ibmcloud wsk activation logs --last
 2018-03-02T09:49:03.021816473Z stderr: this is an error message
 ```
 
-## Polling Activation Logs
+## Polling activation logs
 
 Activation logs can be monitored in real-time, rather than manually retrieving individual activation records.
 

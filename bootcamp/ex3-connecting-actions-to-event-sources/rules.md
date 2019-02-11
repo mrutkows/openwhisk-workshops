@@ -2,7 +2,7 @@
 
 Rules are used to associate a trigger with an action. Each time a trigger event is fired, the action is invoked with the event parameters.
 
-## Creating Rules
+## Creating rules
 
 As an example, create a rule that calls the `hello` action whenever a location update is triggered.
 
@@ -58,7 +58,7 @@ ok: got rule myRule
 }
 ```
 
-## Testing Rules
+## Testing rules
 
 1. Fire the `locationUpdate` trigger. Each time that you fire the trigger with an event, the `hello` action is called with the event parameters.
 
@@ -112,7 +112,7 @@ $ ibmcloud wsk action create recordLocationAndHello --sequence /whisk.system/uti
 $ ibmcloud wsk rule create anotherRule locationUpdate recordLocationAndHello
 ```
 
-## Disabling Rules
+## Disabling rules
 
 Rules are enabled upon creation but can be disabled and re-enabled using the command-line.
 

@@ -46,7 +46,7 @@ $ ibmcloud wsk action create reverse funcs.js --main reverse
 $ ibmcloud wsk action create join funcs.js --main join
 ```
 
-## Creating Sequence Actions
+## Creating sequence actions
 
 1. Test each action to verify it is working.
 
@@ -88,7 +88,7 @@ $ ibmcloud wsk action invoke reverse_words --result --param text "hello world"
 
 Using sequences is a great way to develop re-usable action components that can be joined together into "high-order" actions to create serverless applications.
 
-## Handling Errors
+## Handling errors
 
 What if you want to stop processing functions in a sequence? This might be due to an application error or because the pre-conditions to continue processing have not been met. In the authentication example above, we only want to proceed if the authentication check passes.
 

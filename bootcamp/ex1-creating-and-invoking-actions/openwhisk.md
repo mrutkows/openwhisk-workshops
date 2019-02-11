@@ -6,7 +6,7 @@ Rather than having to [manually construct the HTTP requests](https://github.com/
 
 These libraries make it simple to invoke other actions, fire triggers and access all other platform services.
 
-## Proxy Example
+## Proxy example
 
 Let's look an example of creating a "proxy" action which invokes another action if a "password" is present in the input parameters.
 

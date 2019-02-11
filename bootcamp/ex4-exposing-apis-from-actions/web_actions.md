@@ -43,13 +43,13 @@ $ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/
 }
 ```
 
-## Content Extensions
+## Content extensions
 
 Web actions invoked through the platform API need a content extension to tell the platform how to interpret the content returned from the action. In the example above, we were using the `.json` extension. This tells the platform to serialise the return value out to a JSON response.
 
 The platform supports the following content-types: `.json`, `.html`, `.http`, `.svg` or `.text`. If no content extension is provided, it defaults to `.http` which gives the action full control of the HTTP response.
 
-## HTTP Request Properties
+## HTTP request properties
 
 All web actions, when invoked, receives additional HTTP request details as parameters to the action input argument. These include:
 
@@ -62,7 +62,7 @@ All web actions, when invoked, receives additional HTTP request details as param
 
 The `__ow_user` is only present when the web action is [annotated to require authentication](https://github.com/apache/incubator-openwhisk/blob/master/docs/annotations.md#annotations-specific-to-web-actions) and allows a web action to implement its own authorization policy. The `__ow_query` is available only when a web action elects to handle the ["raw" HTTP request](https://github.com/apache/incubator-openwhisk/blob/master/docs/webactions.md#raw-http-handling). It is a string containing the query parameters parsed from the URI \(separated by `&`\). The `__ow_body` property is present either when handling "raw" HTTP requests, or when the HTTP request entity is not a JSON object or form data. Web actions otherwise receive query and body parameters as first class properties in the action arguments with body parameters taking precedence over query parameters, which in turn take precedence over action and package parameters.
 
-## Controlling HTTP Responses
+## Controlling HTTP responses
 
 Web actions can return a JSON object with the following properties to directly control the HTTP response returned to the client.
 
@@ -74,11 +74,11 @@ The `body` is considered empty if it is `null`, the empty string `""` or undefin
 
 If a `content-type header` is not declared in the action result’s `headers`, the body is interpreted as `application/json` for non-string values, and `text/html` otherwise. When the `content-type` is defined, the controller will determine if the response is binary data or plain text and decode the string using a base64 decoder as needed. Should the body fail to decoded correctly, an error is returned to the caller.
 
-## Additional Features
+## Additional features
 
 Web actions have a [lot more features](https://github.com/apache/incubator-openwhisk/blob/master/docs/webactions.md), see the documentation for full details on all these capabilities.
 
-## Example - HTTP Redirect
+## Example - HTTP redirect
 
 1. Create a new web action from the following source code.
 
@@ -122,7 +122,7 @@ $ curl -v https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/defaul
 < location: http://openwhisk.org
 ```
 
-## Example - HTML Response
+## Example - HTML response
 
 1. Create a new web action from the following source code.
 

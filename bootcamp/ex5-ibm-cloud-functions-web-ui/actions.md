@@ -8,7 +8,7 @@
 
 1. Select an action from the page to move to the action details page.
 
-## Details Overview
+## Details overview
 
 The action details page will show properties for the chosen action.
 
@@ -25,7 +25,7 @@ Using the menu on the left-hand side, different properties for the action can be
 * _"Connected Triggers"_ - shows the triggers action is connected to.
 * _"Enclosing Sequences"_ - shows sequences which use this action.
 
-## Invoking Actions
+## Invoking actions
 
 1. Click the "Invoke" button to invoke an action and display the resulting activation record.
 
@@ -33,7 +33,7 @@ _Input parameters to invocations can be modified using the "Change Input" button
 
 ![Invoking an action](../../.gitbook/assets/invoking-action.gif)
 
-## Creating Actions
+## Creating actions
 
 From the [action overview page](https://console.bluemix.net/openwhisk/actions), new actions can be created by providing the source code through the browser-based editor.
 
