@@ -53,7 +53,7 @@ $ ibmcloud wsk action invoke --result hello --param-file parameters.json
 
 _Notice the use of the_ `--result` _option: it implies a blocking invocation where the CLI waits for the activation to complete and then displays only the result. For convenience, this option may be used without_ `--blocking` _which is automatically inferred._
 
-### nested parameters
+### Nested parameters
 
 Parameter values can be any valid JSON value, including nested objects. Let's update our action to use child properties of the event parameters.
 

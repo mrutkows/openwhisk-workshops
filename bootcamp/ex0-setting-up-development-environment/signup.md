@@ -3,7 +3,7 @@
 ## Register IBM Cloud Account
 
 1. Open a browser window
-2. Navigate to [https://console.bluemix.net/registration/](https://ibm.biz/BdZf65)
+2. Navigate to [https://cloud.ibm.com/registration](https://cloud.ibm.com/registration)
 
    ![Registration page](../../.gitbook/assets/registration.png)
 
