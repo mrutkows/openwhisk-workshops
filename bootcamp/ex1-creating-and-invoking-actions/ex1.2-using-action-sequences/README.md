@@ -10,13 +10,6 @@ _Once you have completed this exercise, you will have…_
 
 Once this exercise is finished, we will be able to use action sequences on IBM Cloud Functions!
 
-## Table Of Contents
-
-* [Background](./#background)
-* [Action Sequences](sequences.md#action-sequences)
-  * [Creating Sequence Actions](sequences.md#creating-sequence-actions)
-  * [Handling Errors](sequences.md#handling-errors)
-
 ## Background
 
 Developers often want to build actions as reusable components which can be combined to build "higher-order" serverless functions.

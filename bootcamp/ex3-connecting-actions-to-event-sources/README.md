@@ -10,18 +10,6 @@ _Once you have completed this exercise, you will have…_
 
 Once this exercise is finished, we can start to develop event-driven serverless applications using IBM Cloud Functions!
 
-## Table Of Contents
-
-* [Background](./#background)
-  * [Triggers](concepts.md#triggers)
-  * [Rules](concepts.md#rules)
-* [Creating Triggers](triggers.md#creating-triggers)
-* [Using Rules](rules.md#using-rules)
-  * [Creating Rules](rules.md#creating-rules)
-  * [Testing Rules](rules.md#testing-rules)
-  * [Disabling Rules](rules.md#disabling-rules)
-* [Connecting Trigger Feeds](feeds.md#connecting-trigger-feeds)
-
 ### Background
 
 Serverless applications are often described as "event-driven" because you can connect serverless functions to external event sources, like message queues and database changes. When these external events fire, the serverless functions are automatically invoked, without any manual intervention.

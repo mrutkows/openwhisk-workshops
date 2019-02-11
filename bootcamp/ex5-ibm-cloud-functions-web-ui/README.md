@@ -8,22 +8,6 @@ _Once you have completed this exercise, you will have…_
 
 Once this exercise is finished, you will be able to use the web ui to build and manage serverless applications on IBM Cloud!
 
-## Table Of Contents
-
-* [Background](./#background)
-* [Navigating To The IBM Cloud Functions Homepage](./#navigating-to-the-ibm-cloud-functions-homepage)
-* [Actions](actions.md#actions)
-  * [Details Overview](actions.md#details-overview)
-  * [Invoking Actions](actions.md#invoking-actions)
-  * [Creating Actions](actions.md#creating-actions)
-* [Triggers](triggers.md#triggers)
-  * [Details Overview](triggers.md#details-overview)
-  * [Creating Triggers](triggers.md#creating-triggers)
-* [Monitoring](monitoring_and_apis.md#monitoring)
-* [APIs](monitoring_and_apis.md#apis)
-  * [Details Overview](monitoring_and_apis.md#details-overview)
-  * [Creating APIs](monitoring_and_apis.md#creating-apis)
-
 ### Background
 
 IBM Cloud Functions comes with a Web UI to help developers manage their serverless applications. Common development tasks such as creating actions, monitoring invocations, setting up triggers and more can all be achieved using this web application. The web application is custom to IBM Cloud and not part of the open-source Apache OpenWhisk project.
