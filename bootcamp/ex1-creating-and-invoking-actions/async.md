@@ -30,8 +30,6 @@ A call to `reject()` can be used to reject the Promise and signal that the activ
 
 ```text
 $ ibmcloud wsk action create asyncAction asyncAction.js
-// OR....
-$ ibmcloud wsk action create asyncAction asyncAction.swift
 ```
 
 ```text
