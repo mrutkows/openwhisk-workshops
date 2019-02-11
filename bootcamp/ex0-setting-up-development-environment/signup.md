@@ -27,11 +27,9 @@ Developers using "_Lite accounts_" are restricted to development within a single
 
 Follow these instructions to check which default region your lite account has been assigned.
 
-1. Open the [IBM Cloud homepage](https://console.bluemix.net/).
-2. Click the _"Manage"_ menu from the page header.
-3. Click the _"_[_Account &gt; Cloud Foundry Orgs_](https://console.bluemix.net/account/organizations)_"_ option from the drop-down menu.
-4. From the [Cloud Foundry Organisations](https://console.bluemix.net/account/organizations) page, click the organisation name listed in the table.
-5. Check the "_Region_" value listed in the organisation details table.
+1. From the [Cloud Foundry Organizations](https://console.bluemix.net/account/organizations) page, click the organization name listed in the table. Note that your organization is usually the email address you signed up with, so click on that.
+2. Check the "_Region_" value listed in the organisation details table.
+3. If it says United Kingdom then your region is `eu-gb`, and if it says Dallas then your region is `us-south`. Remember this value for the next step.
 
 ![Registration page](../../.gitbook/assets/default_region.png)
 
