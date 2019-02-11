@@ -12,7 +12,7 @@ function main() {
 }
 ```
 
-The JavaScript file might contain additional functions. However, by convention, a function called `main` must exist to provide the entry point for the action.
+The JavaScript file might contain additional functions. However, by convention, a function called `main` is the default entry point for the action.
 
 1. Create an action from the following JavaScript function. For this example, the action is called 'hello'.
 

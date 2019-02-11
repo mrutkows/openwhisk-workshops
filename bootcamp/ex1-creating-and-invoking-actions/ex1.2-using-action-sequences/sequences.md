@@ -2,7 +2,7 @@
 
 OpenWhisk supports a kind of action called a "sequence". Sequence actions are created using a list of existing actions. When the sequence action is invoked, each action in executed in order of the action parameter list. Input parameters are passed to the first action in the sequence. Output from each function in the sequence is passed as the input to the next function and so on. The output from the last action in the sequence is returned as the response result.
 
-Here's an example of defining a sequence \(`my_sequence`\) which will invoke three actions \(`a, b, c`\).
+Here's an example of defining a sequence \(`my_sequence`\) which will invoke three actions \(`a, b, c`\). _Note that the following command is merely an example of syntax and should not be run._
 
 ```text
 $ ibmcloud wsk action create my_sequence --sequence a,b,c
@@ -38,7 +38,7 @@ function join(params) {
 }
 ```
 
-1. Create the following three actions
+1. Create the following three actions:
 
 ```text
 $ ibmcloud wsk action create split funcs.js --main split
@@ -48,7 +48,7 @@ $ ibmcloud wsk action create join funcs.js --main join
 
 ## Creating Sequence Actions
 
-1. Test each action to verify it is working
+1. Test each action to verify it is working.
 
 ```text
 $ ibmcloud wsk action invoke split --result --param text "Hello world"

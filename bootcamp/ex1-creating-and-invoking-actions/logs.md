@@ -1,6 +1,6 @@
 # Retrieving Action Logs
 
-Application logs are essential to debugging production issues. In IBM Cloud Functions, all output written by to `stdout` and `stderr` by actions is available in the activation records.
+Application logs are essential to debugging production issues. In IBM Cloud Functions, all output written to `stdout` and `stderr` by actions is available in the activation records.
 
 ## Creating Activation Logs
 
