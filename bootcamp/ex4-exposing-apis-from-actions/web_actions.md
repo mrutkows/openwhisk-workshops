@@ -155,45 +155,6 @@ $ curl https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/h
 <html><body>Hello World!</body></html>
 ```
 
-## Example - JPEG Response
-
-1. Download PNG image and generate base64 string.
-
-```text
-$ wget https://static01.nytimes.com/newsgraphics/2015/01/30/candidate-tracker/assets/images/sanders-square-silo-150.png
-$ base64 sanders-square-silo-150.png
-```
-
-1. Create a new web action from the following source code.
-
-### Node.js
-
-```javascript
-function main() {
-    let png = "<BASE64 ENCODED IMAGE STRING>"
-    return { headers: { "Content-Type": "image/png" },
-             statusCode: 200,
-             body: png };
-}
-```
-
-```text
-$ ibmcloud wsk action create image action.js --web true
-ok: created action image
-```
-
-1. Retrieve URL for new web action.
-
-```text
-$ ibmcloud wsk action get image --url
-ok: got action image
-https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/image
-```
-
-1. Open URL in web browser to check the following image is returned.
-
-![Feel the Bern!](https://static01.nytimes.com/newsgraphics/2015/01/30/candidate-tracker/assets/images/sanders-square-silo-150.png)
-
 ## Example - Manual JSON response
 
 1. Create a new web action from the following source code.
