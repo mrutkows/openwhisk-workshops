@@ -56,7 +56,8 @@ Download the `ibmcloud` CLI by running the command appropriate for your operatin
 4. Run the following command to configure the organisation and space the CLI is targeting.
 
    ```text
-   $ ibmcloud target --cf
+   $ ibmcloud target --cf```
+   ```
    Targeted org user@email.com
    Targeted space dev
 
