@@ -30,6 +30,4 @@
     * [Actions](bootcamp/ex5-ibm-cloud-functions-web-ui/actions.md)
     * [Triggers](bootcamp/ex5-ibm-cloud-functions-web-ui/triggers.md)
     * [Monitoring and APIs](bootcamp/ex5-ibm-cloud-functions-web-ui/monitoring_and_apis.md)
-* [building a weather bot](ex6-building-a-weather-bot.md)
-* [using the serverless framework](ex7-using-the-serverless-framework.md)
 
