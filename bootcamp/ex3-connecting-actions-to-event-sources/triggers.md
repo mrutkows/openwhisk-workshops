@@ -43,7 +43,13 @@ $ ibmcloud wsk trigger update locationUpdate -p name "Donald" -p place "Washingt
 
 ```text
 ok: updated trigger locationUpdate
+```
+
+```text
 $ ibmcloud wsk trigger fire locationUpdate
+```
+
+```text
 ok: triggered locationUpdate
 ```
 
