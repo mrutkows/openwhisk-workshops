@@ -38,7 +38,7 @@ ok: triggered locationUpdate
 Triggers also support default parameters. Firing this trigger without any parameters will pass in the default values.
 
 ```text
-$ ibmcloud wsk trigger update locationUpdate -p name "Donald" -p place "Washington, D.C"
+$ ibmcloud wsk trigger update locationUpdate -p name "Donald" -p place "Washington, D.C."
 ```
 
 ```text
