@@ -46,7 +46,7 @@ Let's turn the `hello` action into a web action. Once it has been converted, we 
    ok: updated action hello
    ```
 
-5. Verify the action is not externally accessible with authentication.
+5. Verify the action is not externally accessible.
 
    ```text
    $ curl "https://openwhisk.ng.bluemix.net/api/v1/web/user%40host.com_dev/default/hello.json?name=Bernie"
@@ -265,5 +265,5 @@ Web actions have a [lot more features](https://github.com/apache/incubator-openw
      "hello": "world"
    ```
 
-🎉🎉🎉 **OpenWhisk Web Actions are an awesome feature. Exposing public APIs from actions is minimal effort. Let's finish off this section by looking at an additional approach, using an API Gateway.** 🎉🎉🎉
+🎉🎉🎉 **OpenWhisk Web Actions are an awesome feature. Exposing public APIs from actions is minimal effort.**  🎉🎉🎉
 
